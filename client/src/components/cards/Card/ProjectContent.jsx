@@ -117,6 +117,7 @@ const ProjectContent = React.memo(({ cardId }) => {
     card.commentsTotal > 0 ||
     attachmentsTotal > 0 ||
     notificationsTotal > 0 ||
+    card.llmResponse ||
     listName;
 
   const isCompact =
@@ -228,6 +229,14 @@ const ProjectContent = React.memo(({ cardId }) => {
               <span className={styles.attachmentContent}>
                 <Icon name="comment outline" />
                 {card.commentsTotal}
+              </span>
+            </span>
+          )}
+          {card.llmResponse && (
+            <span className={classNames(styles.attachment, styles.attachmentLeft)}>
+              <span className={styles.attachmentContent}>
+                <Icon name="brain" />
+                AI
               </span>
             </span>
           )}

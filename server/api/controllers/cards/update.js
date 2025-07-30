@@ -77,6 +77,10 @@ module.exports = {
     isSubscribed: {
       type: 'boolean',
     },
+    llmResponse: {
+      type: 'json',
+      allowNull: true,
+    },
   },
 
   exits: {
@@ -137,6 +141,7 @@ module.exports = {
         'description',
         'dueDate',
         'stopwatch',
+        'llmResponse',
       );
     }
 
@@ -197,6 +202,7 @@ module.exports = {
       'dueDate',
       'stopwatch',
       'isSubscribed',
+      'llmResponse',
     ]);
 
     card = await sails.helpers.cards.updateOne

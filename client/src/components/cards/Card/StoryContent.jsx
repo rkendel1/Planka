@@ -109,7 +109,7 @@ const StoryContent = React.memo(({ cardId }) => {
           {card.name}
         </div>
         {card.description && <div className={styles.descriptionText}>{descriptionText}</div>}
-        {(attachmentsTotal > 0 || notificationsTotal > 0 || listName) && (
+        {(attachmentsTotal > 0 || notificationsTotal > 0 || card.llmResponse || listName) && (
           <span className={styles.attachments}>
             {notificationsTotal > 0 && (
               <span
@@ -135,6 +135,14 @@ const StoryContent = React.memo(({ cardId }) => {
                 <span className={styles.attachmentContent}>
                   <Icon name="attach" />
                   {attachmentsTotal}
+                </span>
+              </span>
+            )}
+            {card.llmResponse && (
+              <span className={classNames(styles.attachment, styles.attachmentLeft)}>
+                <span className={styles.attachmentContent}>
+                  <Icon name="brain" />
+                  AI
                 </span>
               </span>
             )}
