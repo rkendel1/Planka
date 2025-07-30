@@ -359,4 +359,47 @@
     border-radius: 4px;
     margin: 0;
   }
+
+  /* LLM Response Styles */
+  .llmResponseWrapper {
+    background: #f8f9fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .llmResponseSection {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #24292e;
+      font-weight: 600;
+    }
+  }
+
+  .llmList {
+    margin: 4px 0 0 16px;
+    padding: 0;
+
+    li {
+      margin-bottom: 4px;
+      color: #586069;
+    }
+  }
+
+  .llmResponseMeta {
+    border-top: 1px solid #e1e4e8;
+    margin-top: 12px;
+    padding-top: 8px;
+
+    small {
+      color: #6a737d;
+      font-size: 11px;
+    }
+  }
 }

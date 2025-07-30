@@ -51,6 +51,9 @@ export default class extends BaseModel {
     isAllActivitiesFetched: attr({
       getDefault: () => null,
     }),
+    llmResponse: attr({
+      getDefault: () => null,
+    }),
     boardId: fk({
       to: 'Board',
       as: 'board',

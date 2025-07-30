@@ -142,6 +142,33 @@ module.exports = {
       list: values.list,
     });
 
+    // Send card data to LLM for analysis (non-blocking)
+    sails.helpers.cards.sendToLlm
+      .with({
+        card,
+        list: values.list,
+        board: values.board,
+      })
+      .then((llmResponse) => {
+        // Update card with LLM response
+        return Card.qm.updateOne(card.id, { llmResponse });
+      })
+      .then((updatedCard) => {
+        if (updatedCard) {
+          // Broadcast the updated card with LLM response
+          sails.sockets.broadcast(`board:${card.boardId}`, 'cardUpdate', {
+            item: {
+              id: card.id,
+              llmResponse: updatedCard.llmResponse,
+            },
+          });
+        }
+      })
+      .catch((error) => {
+        // Log error but don't fail card creation
+        sails.log.warn('Failed to generate LLM response for card:', card.id, error);
+      });
+
     return card;
   },
 };

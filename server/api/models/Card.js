@@ -58,6 +58,11 @@ module.exports = {
       defaultsTo: false,
       columnName: 'is_closed',
     },
+    llmResponse: {
+      type: 'json',
+      allowNull: true,
+      columnName: 'llm_response',
+    },
     listChangedAt: {
       type: 'ref',
       columnName: 'list_changed_at',

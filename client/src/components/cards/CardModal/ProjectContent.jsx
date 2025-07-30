@@ -510,6 +510,73 @@ const ProjectContent = React.memo(() => {
               </div>
             </div>
           )}
+          {card.llmResponse && (
+            <div className={classNames(styles.contentModule, styles.contentModuleLlmResponse)}>
+              <div className={styles.moduleWrapper}>
+                <Icon name="brain" className={styles.moduleIcon} />
+                <div className={styles.moduleHeader}>AI Analysis</div>
+                <div className={styles.llmResponseWrapper}>
+                  {card.llmResponse.summary && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Summary:</strong> {card.llmResponse.summary}
+                    </div>
+                  )}
+                  {card.llmResponse.priority && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Priority:</strong> {card.llmResponse.priority}
+                    </div>
+                  )}
+                  {card.llmResponse.estimatedHours && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Estimated Hours:</strong> {card.llmResponse.estimatedHours}
+                    </div>
+                  )}
+                  {card.llmResponse.suggestedTags && card.llmResponse.suggestedTags.length > 0 && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Suggested Tags:</strong> {card.llmResponse.suggestedTags.join(', ')}
+                    </div>
+                  )}
+                  {card.llmResponse.riskFactors && card.llmResponse.riskFactors.length > 0 && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Risk Factors:</strong>{' '}
+                      <ul className={styles.llmList}>
+                        {card.llmResponse.riskFactors.map((risk) => (
+                          <li key={risk}>{risk}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {card.llmResponse.dependencies && card.llmResponse.dependencies.length > 0 && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Dependencies:</strong>{' '}
+                      <ul className={styles.llmList}>
+                        {card.llmResponse.dependencies.map((dep) => (
+                          <li key={dep}>{dep}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {card.llmResponse.nextSteps && card.llmResponse.nextSteps.length > 0 && (
+                    <div className={styles.llmResponseSection}>
+                      <strong>Next Steps:</strong>{' '}
+                      <ul className={styles.llmList}>
+                        {card.llmResponse.nextSteps.map((step) => (
+                          <li key={step}>{step}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {card.llmResponse.generatedAt && (
+                    <div className={styles.llmResponseMeta}>
+                      <small>
+                        Generated on {new Date(card.llmResponse.generatedAt).toLocaleString()}
+                      </small>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
           <CustomFieldGroups />
           <TaskLists />
           {attachmentIds.length > 0 && (
