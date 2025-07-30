@@ -60,7 +60,6 @@ module.exports = {
     },
     llmResponse: {
       type: 'json',
-      allowNull: true,
       columnName: 'llm_response',
     },
     listChangedAt: {
